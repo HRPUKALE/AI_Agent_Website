@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Brand colors - Modern Purple */
+    --primary: 271 81% 56%; /* #8b5cf6 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 271 81% 95%;
+    --primary-dark: 271 81% 45%;
+
+    /* Action colors - Vibrant Teal for CTAs */
+    --accent: 178 60% 48%; /* #14b8a6 */
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 178 60% 95%;
+    --accent-dark: 178 60% 35%;
+
+    /* Secondary colors */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 46%;
+
+    /* Muted colors */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* System colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(271 81% 66%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(178 60% 48%) 0%, hsl(178 60% 58%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(271 81% 98%) 100%);
+    --gradient-interactive: linear-gradient(135deg, hsl(271 81% 96%) 0%, hsl(178 60% 96%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 91% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 91% / 0.1), 0 2px 4px -1px hsl(220 13% 91% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 91% / 0.1), 0 4px 6px -2px hsl(220 13% 91% / 0.05);
+    --shadow-brand: 0 10px 25px -5px hsl(271 81% 56% / 0.25);
+    --shadow-accent: 0 10px 25px -5px hsl(178 60% 48% / 0.25);
+    --shadow-glow: 0 0 40px hsl(271 81% 56% / 0.15);
+    
+    /* Animations */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Custom component styles using design system */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-dark;
+    @apply px-6 py-3 rounded-lg font-semibold;
+    @apply transition-all duration-300 transform hover:scale-105;
+    box-shadow: var(--shadow-brand);
+  }
+
+  .btn-accent {
+    @apply text-accent-foreground font-semibold;
+    @apply px-6 py-3 rounded-lg;
+    @apply transition-all duration-300 transform hover:scale-105;
+    background: var(--gradient-cta);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary border-2 border-primary;
+    @apply px-6 py-3 rounded-lg font-semibold;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply bg-card border border-border rounded-xl p-6;
+    @apply transition-all duration-300 hover:scale-105;
+    @apply cursor-pointer;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-glow);
+    @apply border-primary/50;
+  }
+
+  .card-interactive {
+    @apply bg-card border border-border rounded-xl p-6;
+    @apply transition-all duration-500 hover:scale-110;
+    @apply cursor-pointer relative overflow-hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-interactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-interactive);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+
+  .card-interactive:hover::before {
+    left: 0;
+    opacity: 0.1;
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-glow);
+    @apply border-primary/50 transform rotate-1;
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .section-padding {
+    @apply px-4 md:px-8 lg:px-16 xl:px-24 py-16 md:py-24;
+  }
+
+  .interactive-form-field {
+    @apply w-full px-4 py-3 border-2 border-border rounded-lg;
+    @apply focus:ring-2 focus:ring-primary focus:border-primary;
+    @apply transition-all duration-300;
+    @apply bg-background;
+  }
+
+  .interactive-form-field:focus {
+    @apply scale-105;
+    box-shadow: var(--shadow-brand);
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: var(--shadow-md);
+    }
+    to {
+      box-shadow: var(--shadow-glow);
+    }
+  }
+
+  .btn-demo {
+    @apply text-accent-foreground font-bold text-lg;
+    @apply px-8 py-4 rounded-xl;
+    @apply transition-all duration-300 transform hover:scale-110;
+    @apply relative overflow-hidden;
+    background: var(--gradient-cta);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .btn-demo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-demo:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+}
