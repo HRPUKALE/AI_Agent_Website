@@ -2,9 +2,10 @@ import { Linkedin, Twitter, Mail, Facebook, Youtube, Instagram, Phone, MapPin } 
 
 interface FooterProps {
   onNavigate: (section: string) => void;
+  onWorkflowClick: (workflowId: string) => void;
 }
 
-const Footer = ({ onNavigate }: FooterProps) => {
+const Footer = ({ onNavigate, onWorkflowClick }: FooterProps) => {
   return (
     <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -95,13 +96,13 @@ const Footer = ({ onNavigate }: FooterProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="space-y-2">
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('calling-agent')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Calling Agent for Appointment Booking
               </button>
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('whatsapp-bot')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 WhatsApp Appointment/Personal Bot
@@ -109,13 +110,13 @@ const Footer = ({ onNavigate }: FooterProps) => {
             </div>
             <div className="space-y-2">
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('interactive-ai-agent')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 AI Avatar Hub
               </button>
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('customer-support-bot')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Customer Support Bot with Jira + Email
@@ -123,13 +124,13 @@ const Footer = ({ onNavigate }: FooterProps) => {
             </div>
             <div className="space-y-2">
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('social-media-bot')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Social Media Content & Engagement Bot
               </button>
               <button
-                onClick={() => onNavigate('use-cases')}
+                onClick={() => onWorkflowClick('ai-report-generator')}
                 className="block text-left text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 AI Report & Summary Generator

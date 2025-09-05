@@ -66,7 +66,7 @@ const Index = () => {
         <FinalCTASection onNavigate={handleNavigate} />
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} onWorkflowClick={handleWorkflowClick} />
 
       {/* Demo Booking Modal */}
       <DemoBookingModal
