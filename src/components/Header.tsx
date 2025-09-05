@@ -14,7 +14,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-blue-900 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -33,31 +33,31 @@ const Header = ({ onNavigate }: HeaderProps) => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => handleNavClick('home')}
-              className="text-white hover:text-blue-300 transition-colors font-semibold"
+              className="text-foreground hover:text-primary transition-colors"
             >
               Home
             </button>
             <button
               onClick={() => handleNavClick('use-cases')}
-              className="text-white hover:text-blue-300 transition-colors font-semibold"
+              className="text-foreground hover:text-primary transition-colors"
             >
               Use Cases
             </button>
             <button
               onClick={() => handleNavClick('how-it-works')}
-              className="text-white hover:text-blue-300 transition-colors font-semibold"
+              className="text-foreground hover:text-primary transition-colors"
             >
               How It Works
             </button>
             <button
               onClick={() => handleNavClick('testimonials')}
-              className="text-white hover:text-blue-300 transition-colors font-semibold"
+              className="text-foreground hover:text-primary transition-colors"
             >
               Testimonials
             </button>
             <button
               onClick={() => handleNavClick('demo')}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors border-2 border-blue-400"
+              className="btn-accent"
             >
               Book Demo
             </button>
@@ -70,44 +70,44 @@ const Header = ({ onNavigate }: HeaderProps) => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-white" />
+              <X className="h-6 w-6 text-foreground" />
             ) : (
-              <Menu className="h-6 w-6 text-white" />
+              <Menu className="h-6 w-6 text-foreground" />
             )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-blue-700">
+          <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-3">
               <button
                 onClick={() => handleNavClick('home')}
-                className="text-left text-white hover:text-blue-300 transition-colors py-2 font-semibold"
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
                 Home
               </button>
               <button
                 onClick={() => handleNavClick('use-cases')}
-                className="text-left text-white hover:text-blue-300 transition-colors py-2 font-semibold"
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
                 Use Cases
               </button>
               <button
                 onClick={() => handleNavClick('how-it-works')}
-                className="text-left text-white hover:text-blue-300 transition-colors py-2 font-semibold"
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
                 How It Works
               </button>
               <button
                 onClick={() => handleNavClick('testimonials')}
-                className="text-left text-white hover:text-blue-300 transition-colors py-2 font-semibold"
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
                 Testimonials
               </button>
               <button
                 onClick={() => handleNavClick('demo')}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors text-left mt-4"
+                className="btn-accent text-left mt-4"
               >
                 Book Demo
               </button>
