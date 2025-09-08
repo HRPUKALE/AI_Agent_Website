@@ -1,11 +1,12 @@
 import { Linkedin, Twitter, Mail, Facebook, Youtube, Instagram, Phone, MapPin } from "lucide-react";
+import { memo } from "react";
 
 interface FooterProps {
   onNavigate: (section: string) => void;
   onWorkflowClick: (workflowId: string) => void;
 }
 
-const Footer = ({ onNavigate, onWorkflowClick }: FooterProps) => {
+const Footer = memo(({ onNavigate, onWorkflowClick }: FooterProps) => {
   return (
     <footer className="footer-gradient animated-bg relative overflow-hidden">
       {/* Decorative elements */}
@@ -25,6 +26,8 @@ const Footer = ({ onNavigate, onWorkflowClick }: FooterProps) => {
                 style={{
                   filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) brightness(1.1) contrast(1.25)'
                 }}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <p className="text-gray-700 mb-4 sm:mb-6 max-w-lg text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -181,6 +184,8 @@ const Footer = ({ onNavigate, onWorkflowClick }: FooterProps) => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

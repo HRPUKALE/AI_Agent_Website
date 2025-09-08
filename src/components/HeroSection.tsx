@@ -48,6 +48,9 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
                 src={heroImage}
                 alt="Workflow automation illustration showing interconnected apps"
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 rounded-xl sm:rounded-2xl"></div>
             </div>

@@ -68,6 +68,7 @@ const HowItWorksSection = () => {
                   controls
                   poster="/kanishka-software-logo.png"
                   preload="metadata"
+                  loading="lazy"
                 >
                   <source src="/transform-your-business-today.mp4" type="video/mp4" />
                   Your browser does not support the video tag.

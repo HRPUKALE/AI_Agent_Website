@@ -7,6 +7,10 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   :root {
     /* Base colors */
     --background: 0 0% 100%;
@@ -618,19 +622,16 @@ All colors MUST be HSL.
     box-shadow: 0 0 20px hsl(25 95% 53% / 0.3), 0 0 40px hsl(25 95% 53% / 0.2), 0 0 60px hsl(25 95% 53% / 0.1);
   }
 
-  /* Animated background patterns */
+  /* Animated background patterns - optimized */
   .animated-bg {
-    background: linear-gradient(-45deg, hsl(210 100% 50% / 0.1), hsl(280 100% 70% / 0.1), hsl(25 95% 53% / 0.1), hsl(120 100% 50% / 0.1));
-    background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
+    background: linear-gradient(-45deg, hsl(210 100% 50% / 0.05), hsl(280 100% 70% / 0.05), hsl(25 95% 53% / 0.05));
+    background-size: 200% 200%;
+    animation: gradient-shift 12s ease infinite;
   }
 
   @keyframes gradient-shift {
     0% { background-position: 0% 50%; }
-    25% { background-position: 100% 50%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
   }
 
   /* Modern button hover effects */
@@ -665,14 +666,14 @@ All colors MUST be HSL.
     animation: scroll-horizontal 20s linear infinite;
   }
 
-  @keyframes scroll-horizontal {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+@keyframes scroll-horizontal {
+  0% {
+    transform: translate3d(0, 0, 0);
   }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
 
   /* Pause animation on hover */
   .animate-scroll:hover {
@@ -758,4 +759,189 @@ All colors MUST be HSL.
       @apply text-lg leading-relaxed;
     }
   }
+}
+
+/* Smooth Scroll Animations */
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  .scroll-auto {
+    scroll-behavior: auto;
+  }
+  
+  /* Optimized scroll animations */
+  .animate-scroll-in {
+    animation: scrollIn 0.4s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out;
+  }
+  
+  /* Smooth scroll container */
+  .smooth-scroll-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Enhanced scroll behavior for better performance */
+  .enhanced-scroll {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Optimized keyframes for better performance */
+@keyframes scrollIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes wiggle {
+  0%, 7%, 100% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 50% {
+    transform: rotateZ(0);
+  }
+}
+
+/* Custom scrollbar styling for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-dark));
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
 }

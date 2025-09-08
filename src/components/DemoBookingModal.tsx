@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import { X, Calendar, Clock, CheckCircle, User, Mail, Building, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -7,7 +7,7 @@ interface DemoBookingModalProps {
   onClose: () => void;
 }
 
-const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
+const DemoBookingModal = memo(({ isOpen, onClose }: DemoBookingModalProps) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -36,23 +36,23 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
     "Flexible"
   ];
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = useCallback((field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (step < 3) {
       setStep(step + 1);
     }
-  };
+  }, [step]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (step > 1) {
       setStep(step - 1);
     }
-  };
+  }, [step]);
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     // Simulate booking submission
     toast({
       title: "Demo Booked Successfully! 🎉",
@@ -66,14 +66,14 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
     });
     setStep(1);
     onClose();
-  };
+  }, [toast, onClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm">
       <div className="fixed inset-0 flex items-center justify-center p-2 sm:p-4">
-        <div className="bg-card border border-border rounded-xl sm:rounded-2xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl">
+        <div className="bg-card border border-border rounded-xl sm:rounded-2xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] flex flex-col shadow-2xl">
           {/* Header */}
             <div className="gradient-hero text-primary-foreground p-4 sm:p-6 relative">
             <button
@@ -105,7 +105,7 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
           </div>
 
           {/* Content */}
-          <div className="p-4 sm:p-6 overflow-y-auto max-h-[60vh]">
+          <div className="p-4 sm:p-6 flex-1 overflow-y-auto min-h-0">
             {step === 1 && (
               <div className="space-y-4 sm:space-y-6">
                 <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4">
@@ -265,7 +265,7 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
           </div>
 
           {/* Footer */}
-          <div className="p-4 sm:p-6 border-t border-border bg-muted/30">
+          <div className="p-4 sm:p-6 border-t border-border bg-muted/30 flex-shrink-0">
             <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-0">
               <button
                 onClick={handleBack}
@@ -286,7 +286,12 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
                     (step === 1 && (!formData.name || !formData.email || !formData.company)) ||
                     (step === 2 && (!formData.useCase || !formData.preferredTime))
                   }
-                  className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base px-4 sm:px-6 py-2"
+                  className={`text-sm sm:text-base px-4 sm:px-6 py-2 rounded-lg font-medium transition-all ${
+                    (step === 1 && (!formData.name || !formData.email || !formData.company)) ||
+                    (step === 2 && (!formData.useCase || !formData.preferredTime))
+                      ? "bg-muted text-muted-foreground cursor-not-allowed opacity-50"
+                      : "btn-primary hover:scale-105 transform"
+                  }`}
                 >
                   Continue
                 </button>
@@ -304,6 +309,8 @@ const DemoBookingModal = ({ isOpen, onClose }: DemoBookingModalProps) => {
       </div>
     </div>
   );
-};
+});
+
+DemoBookingModal.displayName = 'DemoBookingModal';
 
 export default DemoBookingModal;

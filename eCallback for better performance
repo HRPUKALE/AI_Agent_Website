@@ -1,0 +1,8 @@
+src/components/DemoBookingModal.tsx
+src/components/Footer.tsx
+src/components/Header.tsx
+src/components/HeroSection.tsx
+src/components/HowItWorksSection.tsx
+src/components/WorkflowModal.tsx
+src/index.css
+src/pages/Index.tsx

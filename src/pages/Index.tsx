@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SocialProof from "@/components/SocialProof";
@@ -12,11 +12,11 @@ import DemoBookingModal from "@/components/DemoBookingModal";
 import WorkflowModal from "@/components/WorkflowModal";
 import { workflowData } from "@/data/workflowData";
 
-const Index = () => {
+const Index = memo(() => {
   const [selectedWorkflow, setSelectedWorkflow] = useState<string | null>(null);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
-  const handleNavigate = (section: string) => {
+  const handleNavigate = useCallback((section: string) => {
     if (section === 'demo') {
       setIsDemoModalOpen(true);
       return;
@@ -24,36 +24,43 @@ const Index = () => {
     
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Enhanced smooth scrolling with offset for fixed header
+      const headerHeight = 80; // Approximate header height
+      const elementPosition = element.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
-  };
+  }, []);
 
-  const handleWorkflowClick = (workflowId: string) => {
+  const handleWorkflowClick = useCallback((workflowId: string) => {
     setSelectedWorkflow(workflowId);
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setSelectedWorkflow(null);
     // Restore body scroll
     document.body.style.overflow = 'unset';
-  };
+  }, []);
 
-  const handleBookDemo = () => {
+  const handleBookDemo = useCallback(() => {
     setSelectedWorkflow(null);
     document.body.style.overflow = 'unset';
     setIsDemoModalOpen(true);
-  };
+  }, []);
 
-  const handleCloseDemoModal = () => {
+  const handleCloseDemoModal = useCallback(() => {
     setIsDemoModalOpen(false);
-  };
+  }, []);
 
   const currentWorkflow = selectedWorkflow ? workflowData[selectedWorkflow as keyof typeof workflowData] : null;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background enhanced-scroll">
       <Header onNavigate={handleNavigate} />
       
       <main>
@@ -82,6 +89,8 @@ const Index = () => {
       />
     </div>
   );
-};
+});
+
+Index.displayName = 'Index';
 
 export default Index;

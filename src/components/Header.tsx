@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
   onNavigate: (section: string) => void;
 }
 
-const Header = ({ onNavigate }: HeaderProps) => {
+const Header = memo(({ onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavClick = (section: string) => {
@@ -39,6 +39,9 @@ const Header = ({ onNavigate }: HeaderProps) => {
                    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2)) brightness(1.3) contrast(1.2) saturate(1.1)',
                    imageRendering: 'crisp-edges'
                  }}
+                 loading="eager"
+                 decoding="async"
+                 fetchPriority="high"
                />
             </div>
           </div>
@@ -175,6 +178,8 @@ const Header = ({ onNavigate }: HeaderProps) => {
       </div>
     </header>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;
