@@ -4,31 +4,55 @@ const SocialProof = () => {
     "SaaS Lab", 
     "DataCore",
     "CloudTech",
-    "AutoFlow"
+    "AutoFlow",
+    "TechFlow",
+    "DataSync",
+    "CloudCore",
+    "AutoScale",
+    "FinCore"
   ];
 
   return (
-    <section className="py-16 bg-background border-b border-border">
+    <section className="py-12 bg-gradient-to-r from-blue-50/30 via-purple-50/30 to-orange-50/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <p className="text-muted-foreground mb-8 text-lg">
+          <p className="text-gray-600 mb-8 text-lg font-medium">
             Trusted by teams at innovative companies
           </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {companies.map((company, index) => (
-              <div
-                key={company}
-                className="flex items-center justify-center"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="px-6 py-3 bg-muted rounded-lg border border-border">
-                  <span className="text-muted-foreground font-semibold text-lg">
-                    {company}
-                  </span>
+          <div className="relative overflow-hidden">
+            {/* Gradient fade effects */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-blue-50/30 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-orange-50/30 to-transparent z-10"></div>
+            
+            <div className="flex animate-scroll gap-6 md:gap-8">
+              {/* First set of companies */}
+              {companies.map((company, index) => (
+                <div
+                  key={`first-${company}`}
+                  className="flex-shrink-0 flex items-center justify-center"
+                >
+                  <div className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 group">
+                    <span className="text-gray-700 font-semibold text-base whitespace-nowrap group-hover:text-gray-900 transition-colors">
+                      {company}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {companies.map((company, index) => (
+                <div
+                  key={`second-${company}`}
+                  className="flex-shrink-0 flex items-center justify-center"
+                >
+                  <div className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 group">
+                    <span className="text-gray-700 font-semibold text-base whitespace-nowrap group-hover:text-gray-900 transition-colors">
+                      {company}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

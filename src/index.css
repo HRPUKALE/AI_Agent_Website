@@ -20,17 +20,22 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Brand colors - Modern Purple */
-    --primary: 271 81% 56%; /* #8b5cf6 */
+    /* Brand colors - Modern Electric Blue */
+    --primary: 210 100% 50%; /* #0066ff */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 271 81% 95%;
-    --primary-dark: 271 81% 45%;
+    --primary-light: 210 100% 95%;
+    --primary-dark: 210 100% 40%;
 
-    /* Action colors - Vibrant Teal for CTAs */
-    --accent: 178 60% 48%; /* #14b8a6 */
+    /* Action colors - Vibrant Orange for CTAs */
+    --accent: 25 95% 53%; /* #ff6b35 */
     --accent-foreground: 0 0% 100%;
-    --accent-light: 178 60% 95%;
-    --accent-dark: 178 60% 35%;
+    --accent-light: 25 95% 95%;
+    --accent-dark: 25 95% 45%;
+
+    /* Additional modern colors */
+    --electric-purple: 280 100% 70%; /* #b366ff */
+    --neon-green: 120 100% 50%; /* #00ff00 */
+    --cyber-pink: 320 100% 60%; /* #ff1493 */
 
     /* Secondary colors */
     --secondary: 220 14% 96%;
@@ -52,10 +57,13 @@ All colors MUST be HSL.
     --radius: 0.75rem;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(271 81% 66%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(178 60% 48%) 0%, hsl(178 60% 58%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(271 81% 98%) 100%);
-    --gradient-interactive: linear-gradient(135deg, hsl(271 81% 96%) 0%, hsl(178 60% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 50%) 0%, hsl(280 100% 70%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(320 100% 60%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 100% 98%) 100%);
+    --gradient-interactive: linear-gradient(135deg, hsl(210 100% 96%) 0%, hsl(25 95% 96%) 100%);
+    --gradient-header: linear-gradient(135deg, hsl(210 100% 50% / 0.95) 0%, hsl(280 100% 70% / 0.95) 50%, hsl(25 95% 53% / 0.95) 100%);
+    --gradient-footer: linear-gradient(180deg, hsl(220 15% 98%) 0%, hsl(220 15% 96%) 50%, hsl(220 15% 94%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(220 13% 91% / 0.05);
@@ -215,7 +223,302 @@ All colors MUST be HSL.
   }
 
   .section-padding {
-    @apply px-4 md:px-8 lg:px-16 xl:px-24 py-16 md:py-24;
+    @apply px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  /* Enhanced Responsive Utilities */
+  .container-responsive {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+  }
+
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-md {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-sm {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  .text-responsive-xs {
+    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  }
+
+  .grid-responsive-1 {
+    @apply grid grid-cols-1;
+  }
+
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .gap-responsive {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .spacing-responsive {
+    @apply space-y-4 sm:space-y-6 lg:space-y-8;
+  }
+
+  .padding-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .margin-responsive {
+    @apply m-4 sm:m-6 lg:m-8;
+  }
+
+  /* Mobile-first button sizing */
+  .btn-responsive {
+    @apply px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base;
+  }
+
+  .btn-responsive-lg {
+    @apply px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg;
+  }
+
+  /* Mobile-first card sizing */
+  .card-responsive {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Mobile-first icon sizing */
+  .icon-responsive {
+    @apply h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6;
+  }
+
+  .icon-responsive-lg {
+    @apply h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10;
+  }
+
+  /* Mobile-first spacing */
+  .mobile-padding {
+    @apply px-4 py-8;
+  }
+
+  .tablet-padding {
+    @apply px-6 py-12;
+  }
+
+  .desktop-padding {
+    @apply px-8 py-16;
+  }
+
+  /* Mobile-first text sizing */
+  .mobile-text {
+    @apply text-sm;
+  }
+
+  .tablet-text {
+    @apply text-base;
+  }
+
+  .desktop-text {
+    @apply text-lg;
+  }
+
+  /* Mobile-first grid layouts */
+  .mobile-grid-1 {
+    @apply grid grid-cols-1;
+  }
+
+  .tablet-grid-2 {
+    @apply sm:grid-cols-2;
+  }
+
+  .desktop-grid-3 {
+    @apply lg:grid-cols-3;
+  }
+
+  /* Mobile-first flex layouts */
+  .mobile-flex-col {
+    @apply flex flex-col;
+  }
+
+  .tablet-flex-row {
+    @apply sm:flex-row;
+  }
+
+  .desktop-flex-row {
+    @apply lg:flex-row;
+  }
+
+  /* Mobile-first spacing utilities */
+  .mobile-gap {
+    @apply gap-2;
+  }
+
+  .tablet-gap {
+    @apply sm:gap-4;
+  }
+
+  .desktop-gap {
+    @apply lg:gap-6;
+  }
+
+  /* Mobile-first margin utilities */
+  .mobile-margin {
+    @apply m-2;
+  }
+
+  .tablet-margin {
+    @apply sm:m-4;
+  }
+
+  .desktop-margin {
+    @apply lg:m-6;
+  }
+
+  /* Mobile-first padding utilities */
+  .mobile-padding {
+    @apply p-2;
+  }
+
+  .tablet-padding {
+    @apply sm:p-4;
+  }
+
+  .desktop-padding {
+    @apply lg:p-6;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    .mobile-optimize {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .mobile-optimize h1 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .mobile-optimize h2 {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+    
+    .mobile-optimize h3 {
+      font-size: 1.125rem;
+      line-height: 1.4;
+    }
+    
+    .mobile-optimize p {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    .mobile-optimize button {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .mobile-optimize .card {
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Tablet-specific optimizations */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tablet-optimize {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    .tablet-optimize h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    
+    .tablet-optimize h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .tablet-optimize h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+  }
+
+  /* Desktop-specific optimizations */
+  @media (min-width: 1025px) {
+    .desktop-optimize {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    .desktop-optimize h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+    
+    .desktop-optimize h2 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+    }
+    
+    .desktop-optimize h3 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+  }
+
+  /* Touch-friendly button sizing */
+  @media (max-width: 768px) {
+    .touch-friendly {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    .touch-friendly button {
+      min-height: 44px;
+      padding: 0.75rem 1.5rem;
+    }
+    
+    .touch-friendly input {
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  /* Improved mobile scrolling */
+  @media (max-width: 768px) {
+    .mobile-scroll {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+    }
+    
+    .mobile-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    .mobile-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .mobile-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2px;
+    }
   }
 
   .interactive-form-field {
@@ -268,5 +571,191 @@ All colors MUST be HSL.
   .btn-demo:hover::before {
     width: 300px;
     height: 300px;
+  }
+
+  /* Modern Header Styles */
+  .header-glass {
+    background: var(--gradient-header);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .header-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-glass);
+    pointer-events: none;
+  }
+
+  /* Modern Footer Styles */
+  .footer-gradient {
+    background: var(--gradient-footer);
+    position: relative;
+  }
+
+  .footer-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, hsl(210 100% 50%) 50%, transparent 100%);
+  }
+
+  /* Neon glow effects */
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(210 100% 50% / 0.3), 0 0 40px hsl(210 100% 50% / 0.2), 0 0 60px hsl(210 100% 50% / 0.1);
+  }
+
+  .neon-glow-accent {
+    box-shadow: 0 0 20px hsl(25 95% 53% / 0.3), 0 0 40px hsl(25 95% 53% / 0.2), 0 0 60px hsl(25 95% 53% / 0.1);
+  }
+
+  /* Animated background patterns */
+  .animated-bg {
+    background: linear-gradient(-45deg, hsl(210 100% 50% / 0.1), hsl(280 100% 70% / 0.1), hsl(25 95% 53% / 0.1), hsl(120 100% 50% / 0.1));
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Modern button hover effects */
+  .btn-modern {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-modern:hover::before {
+    left: 100%;
+  }
+
+  .btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Scrolling animation for trusted companies */
+  .animate-scroll {
+    animation: scroll-horizontal 20s linear infinite;
+  }
+
+  @keyframes scroll-horizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Responsive utilities */
+  .container-responsive {
+    @apply w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16;
+  }
+
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-md {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm md:text-base;
+  }
+
+  .grid-responsive-1 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .gap-responsive {
+    @apply gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12;
+  }
+
+  .spacing-responsive {
+    @apply space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10;
+  }
+
+  /* Mobile-first responsive design */
+  @media (max-width: 640px) {
+    .mobile-padding {
+      @apply px-4 py-8;
+    }
+    
+    .mobile-text {
+      @apply text-sm leading-relaxed;
+    }
+    
+    .mobile-button {
+      @apply w-full px-4 py-3 text-sm;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tablet-padding {
+      @apply px-6 py-12;
+    }
+    
+    .tablet-text {
+      @apply text-base leading-relaxed;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .desktop-padding {
+      @apply px-8 py-16;
+    }
+    
+    .desktop-text {
+      @apply text-lg leading-relaxed;
+    }
   }
 }

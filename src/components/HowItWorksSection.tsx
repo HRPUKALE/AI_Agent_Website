@@ -49,19 +49,19 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="section-padding bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+    <section id="how-it-works" className="py-12 sm:py-16 lg:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
             How It Works in <span className="text-primary">35 Seconds</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Column - Video */}
           <div className="order-2 lg:order-1">
-            <div className="relative bg-muted rounded-2xl p-4 md:p-6 border border-border overflow-hidden">
-              <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
+            <div className="relative bg-muted rounded-xl p-2 sm:p-3 md:p-4 border border-border overflow-hidden">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
@@ -74,17 +74,17 @@ const HowItWorksSection = () => {
                 </video>
               </div>
               
-              <div className="mt-6 text-center">
-                <h3 className="text-2xl font-semibold text-foreground mb-4">
+              <div className="mt-3 sm:mt-4 text-center">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-foreground mb-2 sm:mb-3">
                   Transform Your Business Today
                 </h3>
                 
-                <p className="text-muted-foreground mb-6">
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-3 sm:mb-4">
                   Watch how our AI-powered workflows can transform your business operations in just 35 seconds.
                 </p>
 
-                <button className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors">
-                  <Download className="h-5 w-5" />
+                <button className="inline-flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-primary hover:text-primary-dark transition-colors">
+                  <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                   Download Brochure (PDF)
                 </button>
               </div>
@@ -92,25 +92,25 @@ const HowItWorksSection = () => {
           </div>
 
           {/* Right Column - Steps */}
-          <div className="order-1 lg:order-2">
-            <div className="space-y-8">
+          <div className="order-1 lg:order-2 flex items-center">
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8 w-full">
               {steps.map((step, index) => (
                 <div
                   key={step.number}
-                  className="flex gap-6 items-start group"
+                  className="flex gap-3 sm:gap-4 lg:gap-6 items-start group"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm sm:text-base lg:text-lg group-hover:scale-110 transition-transform duration-300">
                       {step.number}
                     </div>
                   </div>
                   
                   <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <h4 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1 sm:mb-2 group-hover:text-primary transition-colors">
                       {step.title}
                     </h4>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
                   </div>
